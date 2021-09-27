@@ -1,33 +1,45 @@
 ## $Id$
 # Contributor: Alexey Andreyev <aa13q@ya.ru>
 # Contributor: Bart Ribbers <bribbers@disroot.org>
+# Contributor: Chupligin Sergey (NeoChapay) <neochapay@gmail.com>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-lipstick-git
-_srcname=qt5-lipstick
-_project=neochapay # mer-core fork
-_branch=master
-pkgver=0.40
-pkgrel=2
+pkgver=0.42.r0.g0d9e2ce0
+pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
-url="https://github.com/neochapay/lipstick-1.git"
+url="https://github.com/nemomobile-ux/lipstick.git"
 license=('LGPL-2.1-only')
-depends=('qt5-sensors' 'qt5-wayland' 'nemo-keepalive-git' 'qt5-resource-git' 'libsystemd' 'mce-headers-git' 'qt5-mce-git' 'qt5-ngfd-git' 'nemo-qml-plugin-devicelock-git' 'nemo-qml-plugin-systemsettings-git')
+depends=('qt5-sensors-sensorfw'
+	    'qt5-wayland'
+	    'nemo-keepalive-git'
+	    'qt5-resource-git'
+	    'libsystemd'
+	    'mce-headers-git'
+	    'qt5-mce-git'
+	    'qt5-ngfd-git'
+	    'nemo-qml-plugin-devicelock-git'
+	    'nemo-qml-plugin-systemsettings-git')
+
 makedepends=('git' 'qt5-tools' 'doxygen' 'graphviz')
-optdepends=()
-provides=("${_srcname}")
-conflicts=()
+provides=("${pkgname%-git}")
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 
-prepare() {
-    cd "${srcdir}/${pkgname}"
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  ( set -o pipefail
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ) 2>/dev/null
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
+  git submodule init
+  git submodule update
   mkdir -p build
   cd build
   qmake ..
