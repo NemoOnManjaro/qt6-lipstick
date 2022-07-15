@@ -5,7 +5,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-lipstick-git
-pkgver=0.44.r8.gd6b37384
+pkgver=0.45.2.r4.g01729c84
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -13,18 +13,24 @@ url="https://github.com/nemomobile-ux/lipstick.git"
 license=('LGPL-2.1-only')
 depends=('qt5-sensors-sensorfw'
 	    'qt5-wayland'
-	    'nemo-keepalive-git'
-	    'qt5-resource-git'
+	    'nemo-keepalive'
+	    'libresourceqt'
 	    'libsystemd'
-	    'mce-headers-git'
-	    'qt5-mce-git'
-	    'qt5-ngfd-git'
-	    'nemo-qml-plugin-devicelock-git'
-	    'nemo-qml-plugin-systemsettings-git'
+	    'mce-headers'
+	    'libmce-qt'
+	    'libngf-qt'
+	    'nemo-qml-plugin-devicelock'
+	    'nemo-qml-plugin-systemsettings'
 	    'pulseaudio'
 	    'bluez-qt')
 
-makedepends=('git' 'qt5-tools' 'doxygen' 'graphviz')
+makedepends=('git'
+	'qt5-tools'
+	'doxygen'
+	'graphviz'
+	'make'
+	'pkgconfig')
+
 provides=("${pkgname%-git}")
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
@@ -53,4 +59,3 @@ package() {
   cd build
   make -j 1 INSTALL_ROOT="${pkgdir}" install
 }
- 
