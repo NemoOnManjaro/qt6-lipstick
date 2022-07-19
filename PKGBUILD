@@ -34,7 +34,7 @@ source=("${url}/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('54742bec30e702494aea6bd03edff86bd09960387773828a9dfcd47e69fe96bc')
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "lipstick-${pkgver}"
   mkdir -p build
   cd build
   qmake ..
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "lipstick-${pkgver}"
   cd build
   make -j 1 INSTALL_ROOT="${pkgdir}" install
 }
