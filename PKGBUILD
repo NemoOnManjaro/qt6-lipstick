@@ -4,8 +4,8 @@
 # Contributor: Chupligin Sergey (NeoChapay) <neochapay@gmail.com>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-pkgname=qt5-lipstick-git
-pkgver=0.45.2.r4.g01729c84
+pkgname=qt5-lipstick
+pkgver=0.45.3
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -24,30 +24,17 @@ depends=('qt5-sensors-sensorfw'
 	    'pulseaudio'
 	    'bluez-qt')
 
-makedepends=('git'
-	'qt5-tools'
+makedepends=('qt5-tools'
 	'doxygen'
 	'graphviz'
 	'make'
 	'pkgconfig')
 
-provides=("${pkgname%-git}")
-source=("${pkgname}::git+${url}")
-sha256sums=('SKIP')
-
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  ( set -o pipefail
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  ) 2>/dev/null
-}
+source=("${url}/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('54742bec30e702494aea6bd03edff86bd09960387773828a9dfcd47e69fe96bc')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  git submodule init
-  git submodule update
   mkdir -p build
   cd build
   qmake ..
