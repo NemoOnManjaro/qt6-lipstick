@@ -9,7 +9,7 @@ pkgver=0.45.3
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
-url="https://github.com/nemomobile-ux/lipstick.git"
+url="https://github.com/nemomobile-ux/lipstick"
 license=('LGPL-2.1-only')
 depends=('qt5-sensors-sensorfw'
 	    'qt5-wayland'
