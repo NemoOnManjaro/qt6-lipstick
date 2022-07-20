@@ -30,11 +30,14 @@ makedepends=('qt5-tools'
 	'make'
 	'pkgconfig')
 
-source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('54742bec30e702494aea6bd03edff86bd09960387773828a9dfcd47e69fe96bc')
+source=("${url}/archive/refs/tags/$pkgver.tar.gz"
+	"https://github.com/sailfishos-mirror/dbus-glib/archive/refs/heads/dbus-gmain.tar.gz")
+sha256sums=('54742bec30e702494aea6bd03edff86bd09960387773828a9dfcd47e69fe96bc'
+	"a130b3bbf5745d430d0eca331a29048ab66d678d4267c87f4f26855678940ebf")
 
 build() {
   cd "lipstick-${pkgver}"
+  cp ../dbus-glib-dbus-gmain/dbus-gmain.* src/3rdparty/dbus-gmain/
   mkdir -p build
   cd build
   qmake ..
