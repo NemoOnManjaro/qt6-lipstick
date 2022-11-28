@@ -33,7 +33,7 @@ makedepends=('qt5-tools'
 
 source=("${url}/archive/refs/tags/$pkgver.tar.gz"
 	"https://github.com/sailfishos-mirror/dbus-glib/archive/d42176ae4763e5288ef37ea314fe58387faf2005.tar.gz")
-sha256sums=('c3c9136d20071ebcd9cbcd6e9fc7934095bb6dd3fe5af1ee2bb00ceb5b4c9c44'
+sha256sums=('a3ca9942a9baeb444c61dca94c5f36592e8f62abf27ca2756269a4ac93927ffc'
 	"f4c28d4740ac90863082e81c869e5178d25238b179747984faf0509e40d1afef")
 
 build() {
