@@ -5,7 +5,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-lipstick
-pkgver=0.46.1
+pkgver=0.46.2
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,8 @@ depends=('qt5-sensors-sensorfw'
 	    'nemo-qml-plugin-devicelock'
 	    'nemo-qml-plugin-systemsettings'
 	    'pulseaudio'
-	    'bluez-qt')
+	    'bluez-qt'
+	    'glacier-settings-developermode')
 
 makedepends=('qt5-tools'
 	'doxygen'
