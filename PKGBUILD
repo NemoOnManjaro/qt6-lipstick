@@ -41,7 +41,7 @@ build() {
   cp ../dbus-glib-d42176ae4763e5288ef37ea314fe58387faf2005/dbus-gmain.* src/3rdparty/dbus-gmain/
   mkdir -p build
   cd build
-  qmake ..
+  qmake VERSION=${pkgver} ..
   make
 }
 
