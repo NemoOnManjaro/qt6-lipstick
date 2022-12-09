@@ -5,7 +5,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-lipstick
-pkgver=0.46.2
+pkgver=0.47
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,9 @@ depends=('qt5-sensors-sensorfw'
 	    'nemo-qml-plugin-devicelock'
 	    'nemo-qml-plugin-systemsettings'
 	    'pulseaudio'
-	    'bluez-qt'
-	    'glacier-settings-developermode')
+	    'pulseaudio-modules-nemo'
+	    'pulseaudio-policy-enforcement'
+	    'bluez-qt')
 
 makedepends=('qt5-tools'
 	'doxygen'
@@ -32,13 +33,13 @@ makedepends=('qt5-tools'
 	'pkgconfig')
 
 source=("${url}/archive/refs/tags/$pkgver.tar.gz"
-	"https://github.com/sailfishos-mirror/dbus-glib/archive/d42176ae4763e5288ef37ea314fe58387faf2005.tar.gz")
-sha256sums=('a3ca9942a9baeb444c61dca94c5f36592e8f62abf27ca2756269a4ac93927ffc'
-	"f4c28d4740ac90863082e81c869e5178d25238b179747984faf0509e40d1afef")
+	"https://github.com/sailfishos-mirror/dbus-glib/archive/refs/heads/dbus-gmain.tar.gz")
+sha256sums=('8a7a9ce5b8a578572645fb3c144464b6ac03e5c6b05d76fa8e63fb6ebe0db5c3'
+	"a130b3bbf5745d430d0eca331a29048ab66d678d4267c87f4f26855678940ebf")
 
 build() {
   cd "lipstick-${pkgver}"
-  cp ../dbus-glib-d42176ae4763e5288ef37ea314fe58387faf2005/dbus-gmain.* src/3rdparty/dbus-gmain/
+  cp ../dbus-glib-dbus-gmain/dbus-gmain.* src/3rdparty/dbus-gmain/
   mkdir -p build
   cd build
   qmake VERSION=${pkgver} ..
