@@ -5,7 +5,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-lipstick
-pkgver=0.47.1
+pkgver=0.48
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ makedepends=('qt5-tools'
 
 source=("${url}/archive/refs/tags/$pkgver.tar.gz"
 	"https://github.com/sailfishos-mirror/dbus-glib/archive/d42176ae4763e5288ef37ea314fe58387faf2005.tar.gz")
-sha256sums=('835870421697a3ad3eb5f80f180662de72da130bb684b04e04b8acfa18a7f8a5'
+sha256sums=('8aadfd9afc02193bde9ab2ddc89276015dc7c44156e9aea3ce9eb3ef4a2f2056'
 	"f4c28d4740ac90863082e81c869e5178d25238b179747984faf0509e40d1afef")
 
 build() {
