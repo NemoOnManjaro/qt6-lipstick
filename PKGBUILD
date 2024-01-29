@@ -4,50 +4,53 @@
 # Contributor: Chupligin Sergey (NeoChapay) <neochapay@gmail.com>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-pkgname=qt5-lipstick
-pkgver=0.48
+_reponame=lipstick
+pkgname=qt6-${_reponame}
+pkgver=1.2
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
-url="https://github.com/nemomobile-ux/lipstick"
+url="https://github.com/nemomobile-ux/${_reponame}"
 license=('LGPL-2.1-only')
-depends=('qt5-sensors-sensorfw'
-	    'qt5-wayland'
-	    'nemo-keepalive'
-	    'libresourceqt'
-	    'libsystemd'
-	    'mce-headers'
-	    'libmce-qt>=1.5.0'
-	    'libngf-qt'
-	    'nemo-qml-plugin-devicelock'
-	    'nemo-qml-plugin-systemsettings'
-	    'pulseaudio'
-	    'pulseaudio-modules-nemo'
-	    'pulseaudio-policy-enforcement'
-	    'bluez-qt')
+depends=(
+        'qt6-sensors-sensorfw'
+        'qt6-wayland'
+        'nemo-keepalive'
+        'libresourceqt'
+        'libsystemd'
+        'mce-headers'
+        'libmce-qt>=1.5.0'
+        'libngf-qt6'
+        'nemo-qml-plugin-devicelock'
+        'nemo-qml-plugin-systemsettings'
+        'pulseaudio'
+        'pulseaudio-modules-nemo'
+        'pulseaudio-policy-enforcement'
+        'bluez-qt6')
 
-makedepends=('qt5-tools'
-	'doxygen'
-	'graphviz'
-	'make'
-	'pkgconfig')
+makedepends=('qt6-tools'
+    'doxygen'
+    'graphviz'
+    'make'
+    'pkgconfig'
+    'timed'
+    'cmake')
 
 source=("${url}/archive/refs/tags/$pkgver.tar.gz"
 	"https://github.com/sailfishos-mirror/dbus-glib/archive/d42176ae4763e5288ef37ea314fe58387faf2005.tar.gz")
-sha256sums=('8aadfd9afc02193bde9ab2ddc89276015dc7c44156e9aea3ce9eb3ef4a2f2056'
+sha256sums=('9ea64ec4b52b327bdf5d41153fd2a13a332be16fb044f57db05042aa9fe1ebc7'
 	"f4c28d4740ac90863082e81c869e5178d25238b179747984faf0509e40d1afef")
 
 build() {
-  cd "lipstick-${pkgver}"
+  cd "${srcdir}/${_reponame}-${pkgver}"
   cp ../dbus-glib-d42176ae4763e5288ef37ea314fe58387faf2005/dbus-gmain.* src/3rdparty/dbus-gmain/
   mkdir -p build
   cd build
-  qmake VERSION=${pkgver} ..
-  make
+  cmake ../  -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+  make  all
 }
 
 package() {
-  cd "lipstick-${pkgver}"
-  cd build
-  make -j 1 INSTALL_ROOT="${pkgdir}" install
+  cd "${srcdir}/${_reponame}-${pkgver}/build"
+  make DESTDIR="$pkgdir" install
 }
