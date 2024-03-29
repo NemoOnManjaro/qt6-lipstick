@@ -6,7 +6,7 @@
 
 _reponame=lipstick
 pkgname=qt6-${_reponame}
-pkgver=1.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -18,17 +18,18 @@ depends=(
         'nemo-keepalive'
         'libresourceqt'
         'libsystemd'
-        'mce-headers'
-        'libmce-qt>=1.5.0'
+        'libmce-qt>=1.5.1'
         'libngf-qt6'
-        'nemo-qml-plugin-devicelock'
+        'nemo-qml-plugin-devicelock>=0.3.9'
         'nemo-qml-plugin-systemsettings'
+        'nemo-qml-plugin-connectivity>=0.2.15'
         'pulseaudio'
         'pulseaudio-modules-nemo'
         'pulseaudio-policy-enforcement'
         'bluez-qt6')
 
 makedepends=('qt6-tools'
+    'mce-headers'
     'doxygen'
     'graphviz'
     'make'
@@ -38,7 +39,7 @@ makedepends=('qt6-tools'
 
 source=("${url}/archive/refs/tags/$pkgver.tar.gz"
 	"https://github.com/sailfishos-mirror/dbus-glib/archive/d42176ae4763e5288ef37ea314fe58387faf2005.tar.gz")
-sha256sums=('9ea64ec4b52b327bdf5d41153fd2a13a332be16fb044f57db05042aa9fe1ebc7'
+sha256sums=('b4360adaf9e06f2b84e27d5c662901910d670cadd4aff492504142850bfcef8c'
 	"f4c28d4740ac90863082e81c869e5178d25238b179747984faf0509e40d1afef")
 
 build() {
