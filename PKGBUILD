@@ -7,7 +7,7 @@
 _reponame=lipstick
 pkgname=qt6-${_reponame}
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nemomobile-ux/${_reponame}"
@@ -26,7 +26,7 @@ depends=(
         'pulseaudio'
         'pulseaudio-modules-nemo'
         'pulseaudio-policy-enforcement'
-        'bluez-qt6')
+        'bluez-qt>=6.0')
 
 makedepends=('qt6-tools'
     'mce-headers'
