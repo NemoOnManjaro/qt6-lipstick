@@ -6,7 +6,7 @@
 
 _reponame=lipstick
 pkgname=qt6-${_reponame}
-pkgver=1.2.5
+pkgver=1.2.7
 pkgrel=2
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ makedepends=('qt6-tools'
 
 source=("${url}/archive/refs/tags/$pkgver.tar.gz"
 	"https://github.com/sailfishos-mirror/dbus-glib/archive/d42176ae4763e5288ef37ea314fe58387faf2005.tar.gz")
-sha256sums=('eb276fa1cbf87679f5556910e53d1652ffcb08893887a652fe69d33ebdcc7a0f'
+sha256sums=('9011404b68a4bbde34e99f8fa9ada7ac15c55978b7144d08be99c23ed5ec5bc9'
 	"f4c28d4740ac90863082e81c869e5178d25238b179747984faf0509e40d1afef")
 
 build() {
