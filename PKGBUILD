@@ -6,8 +6,8 @@
 
 _reponame=lipstick
 pkgname=qt6-${_reponame}
-pkgver=1.2.7
-pkgrel=2
+pkgver=1.2.8
+pkgrel=1
 pkgdesc="QML toolkit for homescreen creation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nemomobile-ux/${_reponame}"
@@ -39,7 +39,7 @@ makedepends=('qt6-tools'
 
 source=("${url}/archive/refs/tags/$pkgver.tar.gz"
 	"https://github.com/sailfishos-mirror/dbus-glib/archive/d42176ae4763e5288ef37ea314fe58387faf2005.tar.gz")
-sha256sums=('9011404b68a4bbde34e99f8fa9ada7ac15c55978b7144d08be99c23ed5ec5bc9'
+sha256sums=('ae320f160d77935b0a74ee713b120f74f25c9dc74692bde3402b8064d611fbc5'
 	"f4c28d4740ac90863082e81c869e5178d25238b179747984faf0509e40d1afef")
 
 build() {
